@@ -29,7 +29,7 @@
     {
         "pluginId": "7df38b4b-6d68-4a0d-ad6a-1da2d5243961",
         "name": "@moxie-protocol/plugin-degenfans-ad",
-        "version": "0.1.8+build.1",
+        "version": "0.1",
         "author": "DegenFans",
         "description": "A Skills to run advertisement campaign for creator coins.",
         "githubUrl": "https://github.com/moxie-protocol/moxie-agent-skills/tree/main/packages/plugin-degenfans-ad",
