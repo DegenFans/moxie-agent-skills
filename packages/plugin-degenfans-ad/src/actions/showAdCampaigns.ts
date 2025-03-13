@@ -8,7 +8,7 @@ import {
 } from "@moxie-protocol/core";
 
 import { AdCampaign, DegenFansResponse, FeaturedCoin, getAdvertisementsCampaigns, getFeaturedCoin } from "../utils/degenfansApi";
-import { MoxieUser ,MoxieWallet} from "@moxie-protocol/moxie-lib";
+import { MoxieUser ,MoxieWallet} from "@moxie-protocol/moxie-agent-lib";
 
 
 export const showAdCampaignsAction: Action = {

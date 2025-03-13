@@ -8,7 +8,7 @@ import {
 } from "@moxie-protocol/core";
 
 import { DegenFansResponse, FeaturedCoin, getFeaturedCoin } from "../utils/degenfansApi";
-import { MoxieUser ,MoxieWallet} from "@moxie-protocol/moxie-lib";
+import { MoxieUser ,MoxieWallet} from "@moxie-protocol/moxie-agent-lib";
 
 
 export const showFaeaturedTokenAction: Action = {
