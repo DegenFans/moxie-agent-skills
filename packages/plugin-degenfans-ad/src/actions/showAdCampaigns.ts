@@ -29,13 +29,13 @@ export const showAdCampaignsAction: Action = {
         callback: HandlerCallback
     ) => {
        const moxieUserInfo: MoxieUser = state.moxieUserInfo as MoxieUser;
-       const wallets:MoxieWallet[]=   moxieUserInfo.wallets;
+       //const wallets:MoxieWallet[]=   moxieUserInfo.wallets;
      
 
         let featuredToken:DegenFansResponse<AdCampaign[]>=await getAdvertisementsCampaigns();
         if(featuredToken.status==200){
-            let tblCampaings:string='<br>';
-            tblCampaings+="|Creator Coin|min Amount|locked||info|\n";
+            let tblCampaings:string='\n';
+            tblCampaings+="|Creator Coin|min Amount|locked|info|\n";
             tblCampaings+="|:--------|----:|------|:------------------|\n";
             if(featuredToken.data){
                 featuredToken.data.forEach(e=>{
