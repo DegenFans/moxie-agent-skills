@@ -1,49 +1,23 @@
+import { FarcasterMetadata, MoxieUser, TwitterMetadata } from "@moxie-protocol/moxie-agent-lib/src";
+import { callGetDfApi, callPostDfApi, DegenFansResponse } from "./degenfansUtil";
 
 
-export interface DegenFansResponse<T>{
-    status:number,
-    message:string,
-    data?:T
-}
 
 export interface YoinkLeaderboard{
   rank:number,
-  moxieId:string,
   name:string,
+  url:string,
   seconds:number,
   cnt:number,
 }
 
-const degenfansApiBaseUrl="https://degenfans.xyz/servlet/rest-services/main/af/v1";
 
-
-export function getMoxieYoinkLeaderboard(): Promise<DegenFansResponse<YoinkLeaderboard[]>> {
-  // For now, consider the data is stored on a static `users.json` file
-  return fetch(degenfansApiBaseUrl+'/moxie-ai-ad-get-yoink-leaderboard/')
-    // the JSON body is taken from the response
-    .then(res => res.json())
-    .then(res => {
-      // The response has an `any` type, so we need to cast
-      // it to the `User` type, and return it from the promise
-      return res as DegenFansResponse<YoinkLeaderboard[]>
-    })
+export async function getMoxieYoinkLeaderboard(): Promise<DegenFansResponse<YoinkLeaderboard[] | null>> {
+  return callGetDfApi<YoinkLeaderboard[]>('/moxie-ai-ad-get-yoink-leaderboard/?token=' + process.env.DEGENFANS_API);
 }
+
+export async function yoinkTheFlag(subjectAddress:string, wallets:string[]): Promise<DegenFansResponse<YoinkLeaderboard | null>> {
+  return callPostDfApi<YoinkLeaderboard>('/moxie-ai-ad-get-yoink-leaderboard/?token=' + process.env.DEGENFANS_API,JSON.stringify({subjectAddress, wallets}));
+}
+
  
-  export function yoinkTheFlag(moxieId:string, wallets:string[]): Promise<DegenFansResponse<YoinkLeaderboard>> {
-    // For now, consider the data is stored on a static `users.json` file
-    return fetch(degenfansApiBaseUrl+'/moxie-ai-ad-add-yoink/?token='+process.env.DEGENFANS_API, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({moxieId, wallets})
-    } )
-      // the JSON body is taken from the response
-      .then(res => res.json())
-      .then(res => {
-        // The response has an `any` type, so we need to cast
-        // it to the `User` type, and return it from the promise
-        return res as DegenFansResponse<YoinkLeaderboard>
-      })
-  }
