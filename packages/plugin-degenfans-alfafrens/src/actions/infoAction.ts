@@ -111,7 +111,15 @@ export const infoAction: Action = {
             {
                 user: "{{user2}}",
                 content: {
-                    text: "Degenfans Alfafrens is ...",
+                    text: `
+              This plugin helps you discover the best staking options on **AlfaFrens**.  
+              AlfaFrens is a **SocialFi** platform where you can subscribe to channels, 
+              get access to token-gated chats, and earn **AF Tokens**. 
+          
+              Once you have **AF Tokens**, you can stake them on various channels and receive a portion of the channel's subscription income as a reward. 
+              This plugin helps you find the optimal staking options for a given amount of **AF Tokens**.
+            `,
+                    action: "DEGENFANS_ALFAFRENS_INFO"
                 },
             },
         ],
